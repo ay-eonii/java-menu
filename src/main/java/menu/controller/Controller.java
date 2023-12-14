@@ -28,5 +28,6 @@ public class Controller {
             List<String> recommend = lunch.getLunch(coach);
             outputView.printRecommend(coach.getName(), recommend);
         }
+        outputView.printEnd();
     }
 }

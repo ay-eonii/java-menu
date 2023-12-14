@@ -6,6 +6,8 @@ import java.util.StringJoiner;
 public class OutputView {
     private static final String GREETINGS = "점심 메뉴 추천을 시작합니다.";
     private static final String RESULT = "메뉴 추천 결과입니다.";
+    private static final String END = "추천을 완료했습니다.";
+
 
     public void printGreetings() {
         System.out.println(GREETINGS);
@@ -25,5 +27,9 @@ public class OutputView {
             stringJoiner.add(recommend);
         }
         System.out.println(stringJoiner);
+    }
+
+    public void printEnd() {
+        System.out.println(END);
     }
 }
