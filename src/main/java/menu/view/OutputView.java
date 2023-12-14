@@ -13,6 +13,7 @@ public class OutputView {
 
     public void printResult(String weekday, String category) {
         System.out.println(System.lineSeparator());
+        System.out.println(RESULT);
         System.out.println(weekday);
         System.out.println(category);
     }
@@ -23,6 +24,6 @@ public class OutputView {
         for (String recommend : recommends) {
             stringJoiner.add(recommend);
         }
-        System.out.println(stringJoiner.toString());
+        System.out.println(stringJoiner);
     }
 }
