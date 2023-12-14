@@ -26,16 +26,19 @@ public class Lunch {
         List<String> lunch = new LinkedList<>();
         for (WeekDay weekDay : categoryMap.keySet()) {
             Category category = categoryMap.get(weekDay);
-            String menu = recommendMenu(coach, category);
+            String menu = recommendMenu(coach, category, lunch);
             lunch.add(menu);
         }
         return lunch;
     }
 
-    private String recommendMenu(Coach coach, Category category) {
+    private String recommendMenu(Coach coach, Category category, List<String> lunch) {
         String menu = Randoms.shuffle(category.getMenus()).get(0);
-        if (coach.hate(menu)) {
-            return recommendMenu(coach, category);
+        long uniqueCount = lunch.stream()
+                .distinct()
+                .count();
+        if (coach.hate(menu) || uniqueCount != lunch.size()) {
+            return recommendMenu(coach, category, lunch);
         }
         return menu;
     }
