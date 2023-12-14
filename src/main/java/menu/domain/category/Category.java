@@ -23,6 +23,14 @@ public enum Category {
         this.menus = menus;
     }
 
+    public static Category match(int order) {
+        return Arrays.stream(values())
+                .filter(category -> category.order == order)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_CATEGORY));
+    }
+
+
     public static Category match(String input) {
         return Arrays.stream(values())
                 .filter(move -> move.menus.contains(input))
