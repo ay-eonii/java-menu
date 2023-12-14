@@ -41,7 +41,7 @@ public enum Category {
 
     public static Category match(String input) {
         return Arrays.stream(values())
-                .filter(move -> move.menus.contains(input))
+                .filter(category -> category.menus.contains(input))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_MENU));
     }
