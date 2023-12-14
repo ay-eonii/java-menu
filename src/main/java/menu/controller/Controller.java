@@ -9,5 +9,6 @@ public class Controller {
     private final InputView inputView = new InputView();
     public void execute() {
         outputView.printGreetings();
+        inputView.readCoach();
     }
 }
