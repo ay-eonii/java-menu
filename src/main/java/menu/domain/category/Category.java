@@ -1,5 +1,8 @@
 package menu.domain.category;
 
+import menu.view.constant.ExceptionMessage;
+
+import java.util.Arrays;
 import java.util.List;
 
 public enum Category {
@@ -20,4 +23,10 @@ public enum Category {
         this.menus = menus;
     }
 
+    public static Category match(String input) {
+        return Arrays.stream(values())
+                .filter(move -> move.menus.contains(input))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_MENU));
+    }
 }
