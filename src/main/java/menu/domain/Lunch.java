@@ -3,6 +3,7 @@ package menu.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import menu.domain.category.Category;
 import menu.domain.category.CategoryMaker;
+import menu.domain.category.CategoryRandomGenerator;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,13 +12,14 @@ import java.util.StringJoiner;
 
 public class Lunch {
     private final Map<WeekDay, Category> categoryMap;
+    private final CategoryMaker categoryMaker = new CategoryMaker(new CategoryRandomGenerator());
 
     public Lunch() {
         categoryMap = recommendCategory();
     }
 
     public Map<WeekDay, Category> recommendCategory() {
-        return CategoryMaker.run();
+        return categoryMaker.run();
     }
 
     public List<String> getLunch(Coach coach) {

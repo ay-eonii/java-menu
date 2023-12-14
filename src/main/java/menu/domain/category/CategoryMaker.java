@@ -1,6 +1,5 @@
 package menu.domain.category;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import menu.domain.WeekDay;
 
 import java.util.HashMap;
@@ -8,11 +7,18 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CategoryMaker {
-    public static Map<WeekDay, Category> run() {
+    private static final int DUPLICATION_LIMIT = 2;
+    private final CategoryRandomGenerator categoryRandomGenerator;
+
+    public CategoryMaker(CategoryRandomGenerator categoryRandomGenerator) {
+        this.categoryRandomGenerator = categoryRandomGenerator;
+    }
+
+    public Map<WeekDay, Category> run() {
         return recommendCategory();
     }
 
-    private static Map<WeekDay, Category> recommendCategory() {
+    private Map<WeekDay, Category> recommendCategory() {
         Map<WeekDay, Category> recommend = new LinkedHashMap<>();
         Map<Integer, Integer> count = new HashMap<>();
         WeekDay[] weekDays = WeekDay.values();
@@ -24,10 +30,10 @@ public class CategoryMaker {
         return recommend;
     }
 
-    private static int getOrder(Map<Integer, Integer> count) {
-        int order = Randoms.pickNumberInRange(1, 5);
+    private int getOrder(Map<Integer, Integer> count) {
+        int order = categoryRandomGenerator.run();
         Integer duplication = count.getOrDefault(order, 0);
-        if (duplication >= 2) {
+        if (duplication >= DUPLICATION_LIMIT) {
             return getOrder(count);
         }
         count.put(order, duplication + 1);
