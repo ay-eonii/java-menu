@@ -7,13 +7,12 @@ public class CategoryValidator {
 
     public static void validate(String[] inputs) {
         if (inputs.length > Constraints.MAX.size) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_COACH_NUMBER);
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_HATE_NUMBER);
         }
     }
 
     private enum Constraints {
-        MAX(2)
-        ;
+        MAX(2);
         private final int size;
 
         Constraints(int size) {
