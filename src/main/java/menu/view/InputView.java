@@ -37,6 +37,9 @@ public class InputView {
             String[] inputs = readWithoutSpace().split(",");
             CategoryValidator.validate(inputs);
             for (String input : inputs) {
+                if (input.isEmpty()) {
+                    continue;
+                }
                 Category.match(input);
             }
             return new Coach(coach, inputs);
@@ -45,7 +48,6 @@ public class InputView {
             return getCoach(coach);
         }
     }
-
 
 
     private String readWithoutSpace() {
