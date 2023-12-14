@@ -22,7 +22,7 @@ public class Controller {
         for (String coachName : coachNames) {
             coaches.add(inputView.readDoNotEatMenu(coachName));
         }
-        Lunch lunch = new Lunch(coaches);
+        Lunch lunch = new Lunch();
         outputView.printResult(WeekDay.printWeekDay(), lunch.getWeekdayCategory());
         for (Coach coach : coaches) {
             List<String> recommend = lunch.getLunch(coach);

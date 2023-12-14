@@ -10,11 +10,9 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 public class Lunch {
-    private final List<Coach> coaches;
     private final Map<WeekDay, Category> categoryMap;
 
-    public Lunch(List<Coach> coaches) {
-        this.coaches = coaches;
+    public Lunch() {
         categoryMap = recommendCategory();
     }
 
