@@ -14,13 +14,21 @@ public enum Category {
     WESTERN(5, "양식", List.of("라자냐", "그라탕", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니"));
 
     private final int order;
-    private final String value;
+    private final String korean;
     private final List<String> menus;
 
-    Category(int order, String value, List<String> menus) {
+    Category(int order, String korean, List<String> menus) {
         this.order = order;
-        this.value = value;
+        this.korean = korean;
         this.menus = menus;
+    }
+
+    public List<String> getMenus() {
+        return this.menus;
+    }
+
+    public String getKorean() {
+        return korean;
     }
 
     public static Category match(int order) {

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import menu.domain.WeekDay;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CategoryMaker {
@@ -12,7 +13,7 @@ public class CategoryMaker {
     }
 
     private static Map<WeekDay, Category> recommendCategory() {
-        Map<WeekDay, Category> recommend = new HashMap<>();
+        Map<WeekDay, Category> recommend = new LinkedHashMap<>();
         Map<Integer, Integer> count = new HashMap<>();
         WeekDay[] weekDays = WeekDay.values();
         for (WeekDay weekDay : weekDays) {
